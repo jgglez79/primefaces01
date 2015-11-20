@@ -12,3 +12,10 @@ install:
     - "sudo update-java-alternatives -s java-8-oracle"
     - "export JAVA_HOME=/usr/lib/jvm/java-8-oracle"
     - "mvn install -DskipTests=true -Dgpg.skip=true"
+    
+    
+deploy:
+  provider: heroku
+  api_key: 6110e8c0-1fce-45a7-860c-1107ea83b03a
+  app: aqueous-spire-3104
+    
