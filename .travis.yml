@@ -1,9 +1,14 @@
 language: java
 
-install: mvn install -DskipTests=true -Dgpg.skip=true
-
-jdk:
-  - oraclejdk8
-
- script:
-  - jdk_switcher use oraclejdk8
+before_install:
+    - "sudo apt-get purge openjdk*"
+    - "sudo apt-get clean"
+    - "sudo apt-get autoremove"
+    - "sudo add-apt-repository -y ppa:webupd8team/java"
+    - "sudo apt-get update"
+    
+install:
+    - "sudo apt-get install oracle-java8-installer"
+    - "sudo update-java-alternatives -s java-8-oracle"
+    - "export JAVA_HOME=/usr/lib/jvm/java-8-oracle"
+    - "mvn install -DskipTests=true -Dgpg.skip=true"
