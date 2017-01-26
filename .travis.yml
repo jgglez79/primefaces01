@@ -1,5 +1,10 @@
 language: java
 
+addons:
+  sonarqube:
+    token:
+      secure: 771e12c1556271133b7dc2a1d7e78f8c726a6fd7
+
 before_install:
     - "sudo apt-get purge openjdk*"
     - "sudo apt-get clean"
@@ -11,11 +16,15 @@ install:
     - "sudo apt-get install oracle-java8-installer"
     - "sudo update-java-alternatives -s java-8-oracle"
     - "export JAVA_HOME=/usr/lib/jvm/java-8-oracle"
-    - "mvn install -DskipTests=true -Dgpg.skip=true"
+    - "mvn install -DskipTests=true -Dgpg.skip=true sonar:sonar"
     
-    
-deploy:
-  provider: heroku
-  api_key: 6110e8c0-1fce-45a7-860c-1107ea83b03a
-  app: aqueous-spire-3104
-    
+
+script:
+  # other script steps might be done before running the actual SonarQube analysis
+ 
+#deploy:
+#  provider: heroku
+#  api_key: 6110e8c0-1fce-45a7-860c-1107ea83b03a
+#  app: aqueous-spire-3104
+  
+  
