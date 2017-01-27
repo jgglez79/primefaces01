@@ -16,7 +16,7 @@ install:
     - "sudo apt-get install oracle-java8-installer"
     - "sudo update-java-alternatives -s java-8-oracle"
     - "export JAVA_HOME=/usr/lib/jvm/java-8-oracle"
-    - "mvn install -DskipTests=true -Dgpg.skip=true sonar:sonar"
+    - "mvn install -DskipTests=true -Dgpg.skip=true sonar:sonar -Dsonar.host.url=https://sonarqube.com -Dsonar.login=771e12c1556271133b7dc2a1d7e78f8c726a6fd7"
     
 
 script:
